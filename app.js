@@ -10,10 +10,16 @@ function sortear(){
     // Criando laço para repetir o numero de acordo com a quantidade pedida
     for (let i = 0; i < quantidade; i++) {
         numero = obterNumeroAleatorio(de, ate);
+
+        //Verificando se existem números repetidos no sorteio
+        while (sorteados.includes(numero)){
+            numero = obterNumeroAleatorio(de,ate);
+        }
         sorteados.push(numero);
     }
-    // mostrando números sorteados
-    alert(sorteados);
+    // substituindo o alert e colocando resultado dos números sorteados dentro da página.
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML =`<label class="texto__paragrafo">Números sorteados: ${sorteados} </label>`;
 }
 // função que gera números aleatórios
 function obterNumeroAleatorio(min, max) {
